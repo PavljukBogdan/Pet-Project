@@ -1,9 +1,9 @@
-import {IStudent} from "./IStudet";
+import {IBallCounter} from "./IBallCounter";
 
-export class Student implements IStudent{
-    private name: String;
-    private lastName: String;
-    private list: Array <number> = [];
+export class Student implements IBallCounter{
+    private readonly name: string;
+    private readonly lastName: string;
+    private list: number[] = [];
     private averageBall: number;
 
     constructor(name, lastName) {
@@ -14,17 +14,18 @@ export class Student implements IStudent{
     public setBall(ball: number): void {
         this.list.push(ball);
     }
-
-    public getBall() {
-        return console.log(`Grades student ${this.name} ${this.lastName} is ${this.list}`);
+    // геттер getBall дійсно доцільніше визначити як функцію, оскільки її результатом буде загальна інформація,
+    // а не "чистий" геттер list.
+    public studentBall(): void {
+        console.log(`Grades student ${this.name} ${this.lastName} is ${this.list}`);
     }
-
+    //в даному випадку, доцільніше цикла буде ф-ція reduce()
      private calculateAverageBall() {
-        this.averageBall = 0;
-        for (let i = 0; i < this.list.length; i++) {
-            this.averageBall += this.list[i];
-        }
-        return parseFloat(String(this.averageBall / this.list.length)).toFixed(2);
+        this.averageBall = this.list.reduce(function (previousValue,currentValue) {
+            return previousValue + currentValue;
+        });
+        //я походу десь випадково тут згенерував конвертацію)
+        return (this.averageBall / this.list.length).toFixed(2);
     }
 
     public toString() {
