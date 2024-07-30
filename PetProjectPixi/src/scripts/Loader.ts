@@ -1,5 +1,6 @@
 // @ts-ignore
 import {ILoaderConfig, LoaderConfig} from "./LoaderConfig";
+import {Globals} from "./Globals";
 export class Loader {
     private loader: PIXI.Loader;
     private readonly resources: ILoaderConfig;
@@ -13,8 +14,8 @@ export class Loader {
             for (const key in this.resources) {
                 this.loader.add(key, this.resources[key]);
             }
-            this.loader.load((_loader: PIXI.Loader, _resources: Partial<Record<string, PIXI.LoaderResource>>) => {
-                console.log(_resources);
+            this.loader.load((_loader: PIXI.Loader, _resources: Partial<Record<string, PIXI.LoaderResource>>): void => {
+                Globals.resources = _resources;
                 resolve();
             });
         });
