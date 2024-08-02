@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js"
 import {Loader} from "./Loader";
 import {MainScene} from "./MainScene";
+import {Tween, update} from "@tweenjs/tween.js";
 export class App {
     private app!: PIXI.Application;
     private loader!: Loader;
@@ -15,6 +16,7 @@ export class App {
     }
 
     private start(): void {
+        this.app.ticker.add(() => {update()});
         this.scene = new MainScene();
         this.app.stage.addChild(this.scene.container);
     }

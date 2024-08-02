@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js"
 import {Globals} from "./Globals";
 import {IPuzzlePeace} from "./PuzzleGridConfig";
+import {Easing, Tween} from "@tweenjs/tween.js";
 
 
 
@@ -93,8 +94,10 @@ export class PuzzlePiece extends PIXI.utils.EventEmitter {
     }
 
     public reset(): void {
-        this.sprite.x = this._field.x;
-        this.sprite.y = this._field.y;
+        const tween: Tween<PIXI.Container> = new Tween(this.sprite);
+        tween.to({x: this._field.x, y: this._field.y}, 300);
+        tween.easing(Easing.Back.Out);
+        tween.start();
     }
 
     private playClickSound(): void {
