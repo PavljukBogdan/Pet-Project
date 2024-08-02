@@ -65,6 +65,8 @@ export class PuzzlePiece extends PIXI.utils.EventEmitter {
         //set the dragging state for this sprite
         this.dragging = true;
         this.sprite.zIndex = 1;
+
+        this.playClickSound();
     }
 
     private onTouchMove(event: PIXI.InteractionEvent): void {
@@ -82,15 +84,21 @@ export class PuzzlePiece extends PIXI.utils.EventEmitter {
 
     }
 
-    private onTouchEnd(event: PIXI.InteractionEvent): void {
+    private onTouchEnd(): void {
         this.dragging = false;
         this.sprite.zIndex = 0;
         this.emit("dragend");
+
+        this.playClickSound();
     }
 
     public reset(): void {
         this.sprite.x = this._field.x;
         this.sprite.y = this._field.y;
+    }
+
+    private playClickSound(): void {
+        Globals.resources.click?.sound.play();
     }
 }
 

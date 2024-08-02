@@ -8,7 +8,10 @@ export const LoaderConfig: ILoaderConfig = {
     puzzle6: require("../sprites/6.png"),
     puzzle7: require("../sprites/7.png"),
     puzzle8: require("../sprites/8.png"),
-    puzzle9: require("../sprites/9.png")
+    puzzle9: require("../sprites/9.png"),
+
+    click: require("../sounds/click.mp3"),
+    music: require("../sounds/music.mp3"),
 };
 
 export interface ILoaderConfig {

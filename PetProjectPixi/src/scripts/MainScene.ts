@@ -9,6 +9,7 @@ export class MainScene {
 
     constructor() {
         this._container = new PIXI.Container();
+        this.playBackgroundMusic();
         this.createBackground();
         this.createPuzzleGrid();
     }
@@ -27,6 +28,13 @@ export class MainScene {
     private createPuzzleGrid(): void {
         const grid: PuzzleGrid = new PuzzleGrid();
         this.container.addChild(grid.container);
+    }
+
+    private playBackgroundMusic(): void {
+        Globals.resources.music?.sound.play({
+            loop: true,
+            volume: 0.2
+        });
     }
 }
 
