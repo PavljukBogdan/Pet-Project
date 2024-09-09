@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+
+# Build output
+dist/
+
+# Webpack specific files
+/.cache
+webpack-stats.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files (adjust according to the IDE you use)
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
